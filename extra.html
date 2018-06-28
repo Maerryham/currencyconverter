@@ -1,0 +1,53 @@
+<script>
+fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${x}_${y}&compact=ultra`, {
+
+method: 'POST', // or 'PUT'
+body: JSON.stringify(data), // data can be `string` or {object}!
+headers: {
+'Content-Type': 'application/json'
+}
+}).then(res => res.json())
+.catch(error => console.error('error is', error));
+.then(data => {
+console.log(data.results);
+let currencies = data.results;
+console.log('data is', currencies);
+alert(data);
+
+alert('here is the currency');
+//Make this bring the result in the obect
+
+document.getElementById("inp").value = optTo.value;
+})
+
+}
+
+
+function getDetails() {
+
+let x = document.getElementById('fromCurrency').value;
+let y = document.getElementById('toCurrency').value;
+fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${x}_${y}&compact=ultra`, {
+
+method: 'POST', // or 'PUT'
+body: JSON.stringify(data), // data can be `string` or {object}!
+headers: {
+'Content-Type': 'application/json'
+}
+}).then(res => res.json())
+.catch(error => console.error('error is', error));
+.then(data => {
+console.log(data.results);
+let currencies = data.results;
+console.log('data is', currencies);
+alert(data);
+
+alert('here is the currency');
+//Make this bring the result in the obect
+
+document.getElementById("inp").value = optTo.value;
+})
+
+}
+
+</script>

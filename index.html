@@ -1,18 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Andela Currency converter API</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/selected.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto" rel="stylesheet">
+
+    <script src="idb.js"></script>
+    <script src="workwithdb.js"></script>
 </head>
 <body>
 
 <!-- Layout-->
 <div class="layout">
 
+    <script>
 
+        //Use a function to get all the select values
+        // function getDetails() {
+        //     let x = document.getElementById('fromCurrency').value;
+        //     let y = document.getElementById('toCurrency').value;
+        //     //let query = `${x}_${y}`;
+        //    // alert(query);
+        //     //Use this or the url
+        //     alert(`https://free.currencyconverterapi.com/api/v5/convert?q=${x}_nullcompact=${y}`);
+        //
+        //     let url = `https://free.currencyconverterapi.com/api/v5/convert?q=${x}_${y}compact=${y}`;
+        //     ///api/v5/convert?q=USD_PHP
+        //     // fetch(`https://free.currencyconverterapi.com/${x}_${y}`)
+        //     //     .then(function(response) {
+        //     //         return response.json();
+        //     //     })
+        //     //     .then(function(myJson) {
+        //     //         console.log(myJson);
+        //     //     });
+        //
+        //
+        //     postData('http://example.com/answer', {answer: 42})
+        //         .then(data => console.log(data)) // JSON from `response.json()` call
+        // .catch(error => console.error(error))
+        //
+        //     function postData(url, data) {
+        //         // Default options are marked with *
+        //         return fetch(url, {
+        //             body: JSON.stringify(data), // must match 'Content-Type' header
+        //             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        //             credentials: 'same-origin', // include, same-origin, *omit
+        //             headers: {
+        //                 'user-agent': 'Mozilla/4.0 MDN Example',
+        //                 'content-type': 'application/json'
+        //             },
+        //             method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        //             mode: 'cors', // no-cors, cors, *same-origin
+        //             redirect: 'follow', // manual, *follow, error
+        //             referrer: 'no-referrer', // *client, no-referrer
+        //         })
+        //             .then(response => response.json()) // parses response to JSON
+        //     }
+        // }
+        //
+
+
+        // fetch(url).then((response)=>{
+        //         response. json().then((data) =>{
+        //         //then you access the data here
+        //         console.log(data);
+        // });
+        // })
+
+        function getDetails() {
+            let w = document.getElementById('whatToConvert').value;
+            let x = document.getElementById('fromCurrency').value;
+            let y = document.getElementById('toCurrency').value;
+            let z = document.getElementById('result');
+            let query = `${x}_${y}`;
+            //alert(query);
+
+            fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${x}_${y}&compact=ultra`).then(  (response) =>
+
+
+            response.json()).then((data) => {
+               // console.log(data.results);
+                console.log(data.query);//
+                //alert(data.query) //undefined
+                alert(data.USD_PHP) //53.459999
+                alert(`data.${x}_${y}`); //data.USD_PHP
+
+               // let val = data.USD_PHP;
+               //  var {"USD_PHP": a} = data.USD_PHP;
+               //  alert(typeof a)
+               //  //alert(data.USD_PHP);
+               //  //var {"USD_PHP": a} = {"USD_PHP":53.459999};
+               //  alert(a); //53.459999
+               //
+               //  let totalresult = a * w;
+               //  //let totalresult = 4 * 4;
+               //  alert(`${totalresult}`);
+               //  alert(typeof totalresult)
+               //     // z.innerHTML = `${totalresult}`;
+                })
+
+            .catch(error => console.log('error is', error));
+
+        }
+
+
+
+
+
+
+        // const housingPromise = getDetails("London");
+        // housingPromise.then(
+        //     (res) => {
+        //     if (res.properties && res.properties.length > 0) {
+        //     console.log(`We found the houses for you: ${res.properties}`);
+        // } else {
+        //     console.log(`Sorry, no housing is available in ${res.
+        //         location}`);
+        // }
+        // },
+        // (error) => {
+        //     console.log(`Something went wrong: ${error}`);
+        // }
+        // );
+
+
+
+        //Edit the promise to send fetch request using fetch API
+        // const housingPromise = getRentalList("London");
+        // housingPromise.then(
+        //     (res) => {
+        //     if (res.properties && res.properties.length > 0) {
+        //     console.log(`We found the houses for you: ${res.properties}`);
+        // } else {
+        //     console.log(`Sorry, no housing is available in ${res.
+        //         location}`);
+        // }
+        // },
+        // (error) => {
+        //     console.log(`Something went wrong: ${error}`);
+        // }
+        // );
+
+
+
+
+
+        // const p = new Promise((resolve, reject) => {
+        //     let result = "The result is out";
+        //     return result;
+        // }).then(function(val) {
+        //     console.log('The value of "hello" is:', val);
+        // });
+
+
+
+
+
+    </script>
 
     <!-- Wrapper-->
     <div class="wrapper">
@@ -37,14 +183,17 @@
 
                            <div class="row">
                                <form method="post" action="#">
-                                <div class="col-md-3 col-sm-3">
-                                    <select class="form-control input-md" name="state" style="width:100%;" id="popa" onchange="soso()"  >
-                                        <option value="" class="form-control input-md">
-                                            FROM CURRENCY
-                                        </option>
+                                   <div class="col-md-3 col-sm-3">
+                                       <input id="whatToConvert" name="whatToConvert" type="number" placeholder="Amount to convert" class="form-control input-md" style="width:100%; float: left;" required="">
 
-                                        <option value="<?php echo $state->state_id; ?>" class="form-control input-md">
-                                            CURRENCY
+
+
+                                   </div>
+                                <div class="col-md-3 col-sm-3">
+                                    <select class="form-control input-md" name="state" style="width:100%;" id="fromCurrency" onchange="soso()"  >
+
+                                        <option value="USD" class="form-control input-md">
+                                            USD
                                         </option>
 
                                     </select>
@@ -52,24 +201,25 @@
 
 
                                 <div class="col-md-3 col-sm-3">
-                                    <select class="form-control input-md styled-select" style="width:100%;" name="lga" id="pops">
-                                        <option value="" class="form-control input-md">
-                                            TO CURRENCY
+                                    <select class="form-control input-md styled-select" style="width:100%;" name="lga" id="toCurrency">
+                                        <option value="PHP" class="form-control input-md">
+                                            PHP
                                         </option>
                                     </select>
                                 </div>
 
-                                <div class="col-md-3 col-sm-3">
-                                    <input id="name" name="price" type="number" placeholder="result" class="form-control input-md" style="width:100%; float: left;" required="">
 
-
-
-                                </div>
 
                                 <div class="col-md-3 col-sm-3">
-                                    <button type="button" class="btn" onclick="bringRes('pin')"><i class="fa fa-search"></i>Search</button>
+                                    <button type="button" class="btn" onclick="getDetails();"><i class="fa fa-search"></i>Convert</button>
                                 </div>
-                            </div>
+                                   <div class="col-md-12 col-sm-12" id="result" style="color:white">
+                                       you
+
+                                   </div>
+
+                            </form>
+                           </div>
 
 
 
