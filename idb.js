@@ -1,5 +1,3 @@
-//newly downloaded
-
 use strict';
 
 (function() {

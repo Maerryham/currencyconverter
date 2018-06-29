@@ -9,6 +9,21 @@
 
     <script src="idb.js"></script>
     <script src="workwithdb.js"></script>
+<script>
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('sw.js').then(function(registration) {
+                // Registration was successful
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function(err) {
+                // registration failed :(
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+    }
+
+</script>
 </head>
 <body>
 
@@ -17,58 +32,7 @@
 
     <script>
 
-        //Use a function to get all the select values
-        // function getDetails() {
-        //     let x = document.getElementById('fromCurrency').value;
-        //     let y = document.getElementById('toCurrency').value;
-        //     //let query = `${x}_${y}`;
-        //    // alert(query);
-        //     //Use this or the url
-        //     alert(`https://free.currencyconverterapi.com/api/v5/convert?q=${x}_nullcompact=${y}`);
-        //
-        //     let url = `https://free.currencyconverterapi.com/api/v5/convert?q=${x}_${y}compact=${y}`;
-        //     ///api/v5/convert?q=USD_PHP
-        //     // fetch(`https://free.currencyconverterapi.com/${x}_${y}`)
-        //     //     .then(function(response) {
-        //     //         return response.json();
-        //     //     })
-        //     //     .then(function(myJson) {
-        //     //         console.log(myJson);
-        //     //     });
-        //
-        //
-        //     postData('http://example.com/answer', {answer: 42})
-        //         .then(data => console.log(data)) // JSON from `response.json()` call
-        // .catch(error => console.error(error))
-        //
-        //     function postData(url, data) {
-        //         // Default options are marked with *
-        //         return fetch(url, {
-        //             body: JSON.stringify(data), // must match 'Content-Type' header
-        //             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        //             credentials: 'same-origin', // include, same-origin, *omit
-        //             headers: {
-        //                 'user-agent': 'Mozilla/4.0 MDN Example',
-        //                 'content-type': 'application/json'
-        //             },
-        //             method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        //             mode: 'cors', // no-cors, cors, *same-origin
-        //             redirect: 'follow', // manual, *follow, error
-        //             referrer: 'no-referrer', // *client, no-referrer
-        //         })
-        //             .then(response => response.json()) // parses response to JSON
-        //     }
-        // }
-        //
-
-
-        // fetch(url).then((response)=>{
-        //         response. json().then((data) =>{
-        //         //then you access the data here
-        //         console.log(data);
-        // });
-        // })
-
+       //The function to convert currencies
         function getDetails() {
             let w = document.getElementById('whatToConvert').value;
             let x = document.getElementById('fromCurrency').value;
@@ -77,6 +41,12 @@
             let query = `${x}_${y}`;
             //alert(query);
 
+            if(w =="" || x =="" || y ==""){
+                z.innerHTML = 'Please enter a value to the input';
+                return;
+
+            }
+
             fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${x}_${y}&compact=ultra`).then(  (response) =>
 
 
@@ -84,75 +54,23 @@
                // console.log(data.results);
                 console.log(data.query);//
                 //alert(data.query) //undefined
-                alert(data.USD_PHP) //53.459999
-                alert(`data.${x}_${y}`); //data.USD_PHP
+                //alert(data.USD_PHP); //53.459999
 
-               // let val = data.USD_PHP;
-               //  var {"USD_PHP": a} = data.USD_PHP;
-               //  alert(typeof a)
-               //  //alert(data.USD_PHP);
-               //  //var {"USD_PHP": a} = {"USD_PHP":53.459999};
-               //  alert(a); //53.459999
-               //
-               //  let totalresult = a * w;
-               //  //let totalresult = 4 * 4;
-               //  alert(`${totalresult}`);
-               //  alert(typeof totalresult)
-               //     // z.innerHTML = `${totalresult}`;
+                //alert(w); //PHP
+
+               // alert(data[query]); //undefined
+
+                let multiplier = data[query];
+
+                let totalresult = multiplier * w;
+                //alert(totalresult);
+                z.innerHTML = totalresult;
                 })
 
             .catch(error => console.log('error is', error));
 
         }
 
-
-
-
-
-
-        // const housingPromise = getDetails("London");
-        // housingPromise.then(
-        //     (res) => {
-        //     if (res.properties && res.properties.length > 0) {
-        //     console.log(`We found the houses for you: ${res.properties}`);
-        // } else {
-        //     console.log(`Sorry, no housing is available in ${res.
-        //         location}`);
-        // }
-        // },
-        // (error) => {
-        //     console.log(`Something went wrong: ${error}`);
-        // }
-        // );
-
-
-
-        //Edit the promise to send fetch request using fetch API
-        // const housingPromise = getRentalList("London");
-        // housingPromise.then(
-        //     (res) => {
-        //     if (res.properties && res.properties.length > 0) {
-        //     console.log(`We found the houses for you: ${res.properties}`);
-        // } else {
-        //     console.log(`Sorry, no housing is available in ${res.
-        //         location}`);
-        // }
-        // },
-        // (error) => {
-        //     console.log(`Something went wrong: ${error}`);
-        // }
-        // );
-
-
-
-
-
-        // const p = new Promise((resolve, reject) => {
-        //     let result = "The result is out";
-        //     return result;
-        // }).then(function(val) {
-        //     console.log('The value of "hello" is:', val);
-        // });
 
 
 
@@ -214,7 +132,7 @@
                                     <button type="button" class="btn" onclick="getDetails();"><i class="fa fa-search"></i>Convert</button>
                                 </div>
                                    <div class="col-md-12 col-sm-12" id="result" style="color:white">
-                                       you
+                                       Output here
 
                                    </div>
 
