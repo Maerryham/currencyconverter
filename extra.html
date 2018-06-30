@@ -148,4 +148,321 @@ return new URL(this.request.url).search.endsWith("bypass-sw") ? void 0 : r.apply
 },{}]},{},[1,2])
 
 //# sourceMappingURL=sw.js.map
+
+
+
+//.....woking request.s
+
+const url = 'https://free.currencyconverterapi.com/api/v5/countries';
+
+
+let optFromt = document.getElementById('fromCurrency');
+let optTot = document.getElementById('toCurrency');
+
+//Try and store responses as you fetch from db
+//Check if database exist to check first before fetching
+fetch(url).then(response => {
+if (response.status !== 200){
+alert(" problem plenty die!!! ");
+return;
+}
+return response.json();
+})
+.then(results => {
+for (const result in results){
+
+//to loop through the json
+for (const sm in results[result]){
+document.getElementById('fromCurrency').innerHTML+= `<option value='${results[result][sm]["currencyId"]}' >${results[result][sm]["currencyId"]}</option>`;
+document.getElementById('toCurrency').innerHTML+= `<option value='${results[result][sm]["currencyId"]}' >${results[result][sm]["currencyId"]}</option>`;
+
+//to declare the variable
+const objects = `{
+id: id,
+CurrencyId = ${results[result][sm]["currencyId"]}
+}`;
+
+//to store the data to database ater
+dbPromise.then(db => {
+const tx = db.transaction('objs', 'readwrite');
+tx.objectStore('objs').put(objects);
+return tx.complete;
+});
+
+}
+}
+})
+.catch(err => console.log("something went wrong", err));
+
+
+//try edited -----------------------------------------------------------------------------------------
+
+
+const url = 'https://free.currencyconverterapi.com/api/v5/countries';
+
+let optFromt = document.getElementById('fromCurrency');
+let optTot = document.getElementById('toCurrency');
+
+//Try and store responses as you fetch from db
+//Check if database exist to check first before fetching
+fetch(url).then(response => {
+    if (response.status !== 200){
+        alert(" problem plenty die!!! ");
+        return;
+    }
+    return response.json();
+})
+    .then(results => {
+
+
+        //make it store to db 4st time
+        // make code look db b4 checking network
+        //check availability on db
+        //else check online the store
+        /*  dbPromise.then(function(db) {
+              var tx = db.transaction('people', 'readwrite');
+              var peopleStore = tx.objectStore('people');
+
+          //iterate this or get this 4rm the loop
+          peopleStore.put({
+              name: 'Sam Munoz',
+              age: 25,
+              favoriteAnimal: 'dog'
+          });
+          */
+
+
+
+        //     return tx.complete;
+        // }).then(function() {
+        //     console.log('People added');
+        // });
+
+        // dbPromise.then(function(db) {
+        //     var tx = db.transaction('people', 'readwrite');
+        //     var peopleStore = tx.objectStore('people');
+
+        dbPromise.then(db => {
+            var tx = db.transaction('currencies', 'readwrite');
+            var currencyStore = tx.currencyStore('people');
+
+            //declare obect variable
+            let objects;
+            for (const result in results) {
+
+                //to loop through the json
+                for (const sm in results[result]) {
+                    document.getElementById('fromCurrency').innerHTML += `<option value='${results[result][sm]["currencyId"]}' >${results[result][sm]["currencyId"]}</option>`;
+                    document.getElementById('toCurrency').innerHTML += `<option value='${results[result][sm]["currencyId"]}' >${results[result][sm]["currencyId"]}</option>`;
+
+                    // to get  the variable
+
+                    objects = `{
+
+                        CurrencyId : ${results[result][sm]["currencyId"]}
+                    }`;
+
+                    currencyStore.put({
+
+                        CurrencyId : `${results[result][sm]["currencyId"]}`
+                    });
+
+                    //to store the data to database ater
+                    // dbPromise.then(db => {
+                    //     const tx = db.transaction('currencies', 'readwrite');
+                    //     tx.objectStore('currencies').put(objects, id);
+                    //     var currencyIndex = objectStore.index('currencyId');
+                    //     return tx.complete;
+                    // }).then(function() {
+                    //     console.log('People added');
+                    // });
+
+
+                    //Here add the obect to the
+                    // dbPromise.then(db => {
+                    //     var tx = db.transaction('currencies', 'readwrite');
+                    //     var currencyStore = tx.currencyStore('people');
+                    //
+                    // currencyStore.put({
+                    //     name: 'Sam Munoz',
+                    //     age: 25,
+                    //     favoriteAnimal: 'dog'
+                    //     });
+                    //
+                    //
+                    //     return tx.complete;
+                    // }).then(function() {
+                    //     console.log('People added');
+                    // });
+
+
+                    console.log(objects);
+
+                }
+
+
+            }
+
+
+            return tx.complete;
+        }).then(function() {
+            console.log('Countries added');
+        });
+    })
+    .catch(err => console.log("something went wrong", err));
+
+
+//Get a function to store the obect to db
+
+// function StorecountrytoDb (){
+//
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //edited final............................................
+
+class autoRequest {
+
+    constructor(model, capacity) {
+        this._openDatabase = openDatabase();
+        // this._capacity = capacity;
+    }
+
+    function openDatabase() {
+        // If the browser doesn't support service worker,
+        // we don't care about having a database
+        if (!navigator.serviceWorker) {
+            return Promise.resolve();
+        }
+
+        return idb.open('converter', 6, upgradeDB => {
+
+            switch (upgradeDb.oldVersion) {
+                case 0:
+                    let currencyStore = upgradeDB.createObjectStore('currencies');
+                    currencyStore.put('Currency', {keyPath: 'id'});
+                case 5:
+                    // upgradeDb.createObjectStore('people', {keyPath: 'name'});
+                    var currencyStore = upgradeDb.transaction.objectStore('currencies');
+
+            }
+        });
+
+        // return idb.open('wittr', 1, upgradeDB => {
+        //     var store = upgradeDb.createObjectStore('wittrs', {
+        //         keyPath: 'id'
+        //     });
+        //     store.createIndex('by-date', 'time');
+        // });
+    }
+
+    function   IndexController() {
+
+        this._dbPromise = openDatabase();
+        // this._registerServiceWorker();
+        // this._cleanImageCache();
+
+    }
+
+    function showCachedMessages() {
+        var indexController = this;
+
+        return this._dbPromise.then(function (db) {
+            // if we're already showing posts, eg shift-refresh
+            // or the very first load, there's no point fetching
+            // else posts from IDB
+            if (!db || indexController._postsView.showingPosts()) return;
+
+            var index = db.transaction('wittrs')
+                .objectStore('wittrs').index('by-date');
+
+            return index.getAll().then(function (messages) {
+                indexController._postsView.addPosts(messages.reverse());
+            });
+        });
+    };
+
+
+    function fetchAndStore() {
+        const    url = 'https://free.currencyconverterapi.com/api/v5/countries';
+
+        let    optFromt = document.getElementById('fromCurrency');
+        let    optTot = document.getElementById('toCurrency');
+
+//Try and store responses as you fetch from db
+//Check if database exist to check first before fetching
+        fetch(url). then(response => {
+            if(response.status !==  200) {
+                alert(
+
+                    " problem plenty die!!! "
+                )
+                ;
+                return;
+            }
+        }
+
+        return response.json();
+    }).then(results => {  dbPromise.then(db => {
+    var tx = db.transaction('currencies', 'readwrite');
+    var currencyStore = tx.objectStore('currencies');
+
+    //declare obect variable
+    let objects;
+    for (const result in results) {
+
+    //to loop through the json
+    for (const sm in results[result]) {
+    document.getElementById('fromCurrency').innerHTML += `<option value='${results[result][sm]["currencyId"]}' >${results[result][sm]["currencyId"]}</option>`;
+    document.getElementById('toCurrency').innerHTML += `<option value='${results[result][sm]["currencyId"]}' >${results[result][sm]["currencyId"]}</option>`;
+
+    // to get  the variable
+
+    objects = `{
+
+                        CurrencyId : ${results[result][sm]["currencyId"]}
+                    }`;
+
+    currencyStore.put({
+
+    CurrencyId: `${results[result][sm]["currencyId"]}`
+    });
+
+
+    // console.log(objects);
+
+    }
+
+
+    }
+
+
+    return tx.complete;
+    }).then(function () {
+    console.log('Many Countries added');
+    })
+    .catch(err => console.log("something went wrong", err));
+    ;
+    })
+    .catch(err => console.log("something went wrong", err));
+
+
+//Get a function to store the obect to db
+
+// function StorecountrytoDb (){
+//
+// }
+
+    }
 </script>

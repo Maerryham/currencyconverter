@@ -1,4 +1,4 @@
-var staticCacheName = 'converter-v3';
+var staticCacheName = 'converter-v6';
 //yess
 self.addEventListener('install', function(event) {
 
@@ -13,8 +13,10 @@ self.addEventListener('install', function(event) {
                 'css/style.css',
                 'css/selected.css',
                 'imgs/icon.png',
+                'images/close.png',
                 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
-                'https://fonts.googleapis.com/css?family=Poppins|Roboto'
+                'https://fonts.googleapis.com/css?family=Poppins|Roboto',
+                'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
             ]);
         })
     );

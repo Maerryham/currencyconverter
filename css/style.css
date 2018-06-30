@@ -228,18 +228,18 @@ iframe {
     position: relative;
 }
 
-html .layout,
-body .layout {
-    height: 100%;
-    min-height: 100%;
-    width: 100%;
-}
+/*html .layout,*/
+/*body .layout {*/
+    /*height: 100%;*/
+    /*min-height: 100%;*/
+    /*width: 100%;*/
+/*}*/
 
-.layout {
-    opacity: 0;
-    -webkit-transition: 1.7s opacity ease;
-    transition: 1.7s opacity ease;
-}
+/*.layout {*/
+    /*opacity: 0;*/
+    /*-webkit-transition: 1.7s opacity ease;*/
+    /*transition: 1.7s opacity ease;*/
+/*}*/
 
 .layout.fade-in {
     opacity: 1;
