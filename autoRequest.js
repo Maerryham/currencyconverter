@@ -23,16 +23,16 @@ fetch(url).then(response => {
 
 //to declare the variable
                 const objects = `{
-id: id,
-CurrencyId = ${results[result][sm]["currencyId"]}
-}`;
+                    id: id,
+                    CurrencyId = "${results[result][sm]["currencyId"]}"
+                }`;
 
 //to store the data to database ater
-                dbPromise.then(db => {
-                    const tx = db.transaction('objs', 'readwrite');
-                    tx.objectStore('objs').put(objects);
-                    return tx.complete;
-                });
+//                 dbPromise.then(db => {
+//                     const tx = db.transaction('objs', 'readwrite');
+//                     tx.objectStore('objs').put(objects);
+//                     return tx.complete;
+//                 });
 
             }
         }
