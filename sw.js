@@ -3,11 +3,12 @@ let staticCacheName = 'converter-v7';
 let filesToCache = [
     '/',
     'index.html',
-    'autoRequest.js',
-    'workwithdb.js',
-    'idb.js',
+    'js/autoRequest.js',
+    'js/workwithdb.js',
+    'js/idb.js',
+    'countries',
+    'images/download.jpg',
     'css/style.css',
-    'css/selected.css',
     'images/close.png',
     'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
     'https://fonts.googleapis.com/css?family=Poppins%7CRoboto',
@@ -67,7 +68,7 @@ self.addEventListener('fetch', function(event) {
                         .catch(function(err) {       // fallback mechanism
                             return caches.open(CACHE_CONTAINING_ERROR_MESSAGES)
                                 .then(function(cache) {
-                                    return cache.match('/offline.html');
+                                    return cache.match('/index.html');
                                 });
                         });
                 }

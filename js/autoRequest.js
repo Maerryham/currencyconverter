@@ -9,7 +9,7 @@ let optTot = document.getElementById('toCurrency');
 
 fetch(url).then(response => {
     if (response.status !== 200){
-        alert(" problem plenty die!!! ");
+        alert("Make it work, problem is somewhere ");
         return;
     }
     return response.json();
