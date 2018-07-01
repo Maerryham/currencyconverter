@@ -6,7 +6,6 @@ let filesToCache = [
     'js/autoRequest.js',
     'js/workwithdb.js',
     'js/idb.js',
-    'countries',
     'images/download.jpg',
     'css/style.css',
     'images/close.png',
@@ -51,6 +50,15 @@ self.addEventListener('activate', function(event) {
 
 
 self.addEventListener('fetch', function(event) {
+    var requestUrl = new URL(event.request.url);
+    if (requestUrl.origin === location.origin) {
+        if (requestUrl.pathname === '/') {
+            event.respondWith(caches.match('/'));
+            return;
+        }
+        return
+
+    }
     event.respondWith(
         caches.match(event.request)
             .then(function(response) {

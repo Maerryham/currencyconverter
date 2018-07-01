@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89a58abe-18fb-4532-bed0-5e4cec7b7c97" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/autoRequest.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/copied-idb-test.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/copied-indexController.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/copiedsw.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/css/selected.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/db.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/extra.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/home.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/homed.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/idb.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change beforePath="$PROJECT_DIR$/indexControl.js" afterPath="" />
       <change beforePath="$PROJECT_DIR$/sw.js" afterPath="$PROJECT_DIR$/sw.js" />
-      <change beforePath="$PROJECT_DIR$/swController.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/workwithdb.js" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,21 +13,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="92" column="0" lean-forward="true" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+            <state relative-caret-position="1683">
+              <caret line="99" column="56" lean-forward="false" selection-start-line="99" selection-start-column="56" selection-end-line="99" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sw.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sw.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sw.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="153">
+              <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -87,6 +72,7 @@
       <find>test-db</find>
       <find>filesToCache</find>
       <find>open</find>
+      <find>xboot</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -108,8 +94,8 @@
         <option value="$PROJECT_DIR$/copiedsw.js" />
         <option value="$PROJECT_DIR$/autoRequest.js" />
         <option value="$PROJECT_DIR$/workwithdb.js" />
-        <option value="$PROJECT_DIR$/sw.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/sw.js" />
       </list>
     </option>
   </component>
@@ -208,12 +194,12 @@
       <workItem from="1530219291774" duration="6618000" />
       <workItem from="1530227248806" duration="31886000" />
       <workItem from="1530359743875" duration="26160000" />
-      <workItem from="1530424826869" duration="12750000" />
+      <workItem from="1530424826869" duration="13482000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105428000" />
+    <option name="totallyTimeSpent" value="106160000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -658,18 +644,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sw.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="1683">
+          <caret line="99" column="56" lean-forward="false" selection-start-line="99" selection-start-column="56" selection-end-line="99" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/sw.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="92" column="0" lean-forward="true" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
           <folding />
         </state>
       </provider>
