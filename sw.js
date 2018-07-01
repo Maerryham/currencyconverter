@@ -1,14 +1,15 @@
 let dataCacheName = 'countries';
 let staticCacheName = 'converter-v7';
 let filesToCache = [
-
-    'index.html',
-    'js/autoRequest.js',
-    'js/workwithdb.js',
-    'js/idb.js',
-    'images/download.jpg',
-    'css/style.css',
-    'images/close.png',
+    '/',
+    '/currencyconverter/index.html',
+    '/currencyconverter/js/autoRequest.js',
+    '/currencyconverter/js/workwithdb.js',
+    '/currencyconverter/js/idb.js',
+    '/currencyconverter/css/style.css',
+    '/currencyconverter/images/spec-11.jpg',
+    '/currencyconverter/images/download.png',
+    '/currencyconverter/images/close.png',
     'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
     'https://fonts.googleapis.com/css?family=Poppins%7CRoboto',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
@@ -50,15 +51,6 @@ self.addEventListener('activate', function(event) {
 
 
 self.addEventListener('fetch', function(event) {
-    var requestUrl = new URL(event.request.url);
-    if (requestUrl.origin === location.origin) {
-        if (requestUrl.pathname === '/') {
-            event.respondWith(caches.match('./index.html'));
-            return;
-        }
-        return
-
-    }
     event.respondWith(
         caches.match(event.request)
             .then(function(response) {
@@ -76,7 +68,7 @@ self.addEventListener('fetch', function(event) {
                         .catch(function(err) {       // fallback mechanism
                             return caches.open(CACHE_CONTAINING_ERROR_MESSAGES)
                                 .then(function(cache) {
-                                    return cache.match('/index.html');
+                                    return cache.match('/offline.html');
                                 });
                         });
                 }
