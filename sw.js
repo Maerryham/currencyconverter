@@ -2,14 +2,14 @@ let dataCacheName = 'countries';
 let staticCacheName = 'converter-v7';
 let filesToCache = [
     '/',
-    '/currencyconverter/index.html',
-    '/currencyconverter/js/autoRequest.js',
-    '/currencyconverter/js/workwithdb.js',
-    '/currencyconverter/js/idb.js',
-    '/currencyconverter/css/style.css',
-    '/currencyconverter/images/spec-11.jpg',
-    '/currencyconverter/images/download.png',
-    '/currencyconverter/images/close.png',
+    'index.html',
+    'js/autoRequest.js',
+    'js/workwithdb.js',
+    'js/idb.js',
+    'css/style.css',
+    'images/spec-11.jpg',
+    'images/download.png',
+    'images/close.png',
     'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
     'https://fonts.googleapis.com/css?family=Poppins%7CRoboto',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
