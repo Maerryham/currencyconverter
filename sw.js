@@ -1,14 +1,14 @@
 let dataCacheName = 'countries';
 let staticCacheName = 'converter-v7';
 let filesToCache = [
-    '/',
-    './index.html',
-    './js/autoRequest.js',
-    './js/workwithdb.js',
-    './js/idb.js',
-    './images/download.jpg',
-    './css/style.css',
-    './images/close.png',
+
+    'index.html',
+    'js/autoRequest.js',
+    'js/workwithdb.js',
+    'js/idb.js',
+    'images/download.jpg',
+    'css/style.css',
+    'images/close.png',
     'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
     'https://fonts.googleapis.com/css?family=Poppins%7CRoboto',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
