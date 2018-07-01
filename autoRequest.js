@@ -6,6 +6,7 @@ let optTot = document.getElementById('toCurrency');
 
 //Try and store responses as you fetch from db
 //Check if database exist to check first before fetching
+
 fetch(url).then(response => {
     if (response.status !== 200){
         alert(" problem plenty die!!! ");
@@ -33,8 +34,9 @@ fetch(url).then(response => {
 //                     tx.objectStore('objs').put(objects);
 //                     return tx.complete;
 //                 });
-
+                //console.log(objects);
             }
+            //console.log(objects);
         }
     })
     .catch(err => console.log("something went wrong", err));
